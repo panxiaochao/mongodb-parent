@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.spxcframework</groupId>
+	<groupId>com.github.panxiaochao</groupId>
 	<artifactId>mongodb-parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
 	<!-- licenses -->
@@ -44,7 +44,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>3.1.0</version>
 				<executions>
 					<execution>
 						<id>auto-clean</id>
@@ -56,25 +56,34 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+					<!-- 忽略错误 -->
+					<failOnError>false</failOnError>
+				</configuration>
 			</plugin>
 			<!-- 编译环境 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
+				<version>3.8.0</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
 					<encoding>${project.build.sourceEncoding}</encoding>
+					<!-- 跳过测试 -->
+					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
 			<!-- 生成javadoc文档包的插件 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>3.0.1</version>
 				<configuration>
 					<aggregate>true</aggregate>
+					<charset>${project.build.sourceEncoding}</charset>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<docencoding>${project.build.sourceEncoding}</docencoding>
 				</configuration>
 				<executions>
 					<execution>
@@ -92,6 +101,9 @@
 				<version>3.0.1</version>
 				<configuration>
 					<attach>true</attach>
+					<charset>${project.build.sourceEncoding}</charset>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<docencoding>${project.build.sourceEncoding}</docencoding>
 				</configuration>
 				<executions>
 					<execution>
@@ -103,16 +115,9 @@
 				</executions>
 			</plugin>
 
-			<!-- maven-deploy-plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<version>2.8.2</version>
-				<configuration>
-					<!-- 更新元数据 -->
-					<updateReleaseInfo>true</updateReleaseInfo>
-				</configuration>
-			</plugin>
+			<!-- maven-deploy-plugin <plugin> <groupId>org.apache.maven.plugins</groupId> 
+				<artifactId>maven-deploy-plugin</artifactId> <version>2.8.2</version> <configuration> 
+				<updateReleaseInfo>true</updateReleaseInfo> </configuration> </plugin> -->
 		</plugins>
 	</build>
 
