@@ -8,7 +8,7 @@
 	<groupId>com.github.panxiaochao</groupId>
 	<artifactId>mongodb-parent</artifactId>
 	<version>1.0.1</version>
-	<name>mongodb-parent-tools</name>
+	<name>mongodb-parent</name>
 	<url>https://github.com/panxiaochao/mongodb-parent</url>
 	<description>mongodb-parent for mongodb cmd tools</description>
 
@@ -21,7 +21,6 @@
 
 	<modules>
 		<module>mongodb-query</module>
-		<module>mongodb-all</module>
 	</modules>
 
 	<!-- licenses -->
@@ -71,34 +70,13 @@
 					<source>${java.version}</source>
 					<target>${java.version}</target>
 				</configuration>
-				<dependencies>
+				<!-- <dependencies>
 					<dependency>
 						<groupId>org.codehaus.plexus</groupId>
 						<artifactId>plexus-compiler-javac</artifactId>
 						<version>2.8.5</version>
 					</dependency>
-				</dependencies>
-			</plugin>
-
-			<!-- 生成sources源码包的插件 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>3.0.1</version>
-				<configuration>
-					<attach>true</attach>
-					<charset>${project.build.sourceEncoding}</charset>
-					<encoding>${project.build.sourceEncoding}</encoding>
-					<docencoding>${project.build.sourceEncoding}</docencoding>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
+				</dependencies> -->
 			</plugin>
 
 			<!-- 生成javadoc文档包的插件 -->
@@ -130,6 +108,26 @@
 			<id>release</id>
 			<build>
 				<plugins>
+					<!-- 生成sources源码包的插件 -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+						<version>3.0.1</version>
+						<configuration>
+							<attach>true</attach>
+							<charset>${project.build.sourceEncoding}</charset>
+							<encoding>${project.build.sourceEncoding}</encoding>
+							<docencoding>${project.build.sourceEncoding}</docencoding>
+						</configuration>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>jar-no-fork</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
 					<!-- GPG 打包插件 -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
